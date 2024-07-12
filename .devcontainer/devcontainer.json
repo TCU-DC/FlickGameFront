@@ -1,0 +1,43 @@
+// フォーマットの詳細については、https://aka.ms/devcontainer.json 設定オプションについては
+// https://github.com/devcontainers/templates/tree/main/src/typescript-node のREADMEを参照のこと。
+{
+  "name": "Node.js & TypeScript",
+  // または、DockerfileまたはDocker Composeファイルを使用してください。詳細情報: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+
+  // 開発コンテナに追加する機能。詳細情報: https://containers.dev/features.
+  // "features": {},
+
+  // コンテナ内のポート一覧をローカルで利用可能にするには、"forwardPorts"を使用する。
+  // "forwardPorts": [],
+
+  // コンテナ作成後にコマンドを実行するには、"postCreateCommand"を使用する。
+  "postCreateCommand": "npm install",
+
+  // ツール固有のプロパティを設定する。
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      },
+
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "stylelint.vscode-stylelint",
+        "MS-CEINTL.vscode-language-pack-ja",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "aaron-bond.better-comments",
+        "mosapride.zenkaku",
+        "formulahendry.auto-rename-tag",
+        "csstools.postcss"
+      ]
+    }
+  }
+
+  // 代わりにrootとして接続する場合はコメントを外してください。詳細はこちら: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
