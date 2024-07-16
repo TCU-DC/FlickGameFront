@@ -13,6 +13,7 @@
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-swipeable": "^7.0.1",
     "secretlint": "^8.2.4"
   },
   "devDependencies": {
