@@ -1,44 +1,324 @@
 {
   "words": [
-    "桜",
-    "海",
-    "富士山",
-    "和風",
-    "映画",
-    "音楽",
-    "食事",
-    "友達",
-    "学校",
-    "本",
-    "電車",
-    "図書館",
-    "花火",
-    "夏",
-    "冬",
-    "雪",
-    "月",
-    "星",
-    "公園",
-    "自転車",
-    "カメラ",
-    "写真",
-    "旅行",
-    "飛行機",
-    "空",
-    "祭り",
-    "川",
-    "山",
-    "動物",
-    "家族",
-    "料理",
-    "スポーツ",
-    "サッカー",
-    "テレビ",
-    "映画館",
-    "美術館",
-    "音楽会",
-    "風景",
-    "建物",
-    "通り"
+    {
+      "word": {
+        "content": "桜",
+        "furigana": "さくら",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "海",
+        "furigana": "うみ",
+        "point": 8,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "富士山",
+        "furigana": "ふじさん",
+        "point": 15,
+        "level": "hard"
+      }
+    },
+    {
+      "word": {
+        "content": "和風",
+        "furigana": "わふう",
+        "point": 12,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "映画",
+        "furigana": "えいが",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "音楽",
+        "furigana": "おんがく",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "食事",
+        "furigana": "しょくじ",
+        "point": 11,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "友達",
+        "furigana": "ともだち",
+        "point": 6,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "学校",
+        "furigana": "がっこう",
+        "point": 8,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "本",
+        "furigana": "ほん",
+        "point": 5,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "電車",
+        "furigana": "でんしゃ",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "図書館",
+        "furigana": "としょかん",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "花火",
+        "furigana": "はなび",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "夏",
+        "furigana": "なつ",
+        "point": 6,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "冬",
+        "furigana": "ふゆ",
+        "point": 6,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "雪",
+        "furigana": "ゆき",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "月",
+        "furigana": "つき",
+        "point": 5,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "星",
+        "furigana": "ほし",
+        "point": 5,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "公園",
+        "furigana": "こうえん",
+        "point": 8,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "自転車",
+        "furigana": "じてんしゃ",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "カメラ",
+        "furigana": "かめら",
+        "point": 6,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "写真",
+        "furigana": "しゃしん",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "旅行",
+        "furigana": "りょこう",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "飛行機",
+        "furigana": "ひこうき",
+        "point": 11,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "空",
+        "furigana": "そら",
+        "point": 8,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "祭り",
+        "furigana": "まつり",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "川",
+        "furigana": "かわ",
+        "point": 5,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "山",
+        "furigana": "やま",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "動物",
+        "furigana": "どうぶつ",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "家族",
+        "furigana": "かぞく",
+        "point": 8,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "料理",
+        "furigana": "りょうり",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "スポーツ",
+        "furigana": "すぽーつ",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "サッカー",
+        "furigana": "さっかー",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "テレビ",
+        "furigana": "てれび",
+        "point": 6,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "映画館",
+        "furigana": "えいがかん",
+        "point": 10,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "美術館",
+        "furigana": "びじゅつかん",
+        "point": 12,
+        "level": "hard"
+      }
+    },
+    {
+      "word": {
+        "content": "音楽会",
+        "furigana": "おんがくかい",
+        "point": 9,
+        "level": "normal"
+      }
+    },
+    {
+      "word": {
+        "content": "風景",
+        "furigana": "ふうけい",
+        "point": 8,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "建物",
+        "furigana": "たてもの",
+        "point": 7,
+        "level": "easy"
+      }
+    },
+    {
+      "word": {
+        "content": "通り",
+        "furigana": "とおり",
+        "point": 6,
+        "level": "easy"
+      }
+    }
   ]
 }
