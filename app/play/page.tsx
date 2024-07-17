@@ -1,10 +1,15 @@
-import Button from "@/components/Button";
+import { Container } from "@/di/container";
+import Play from "@/components/Play";
 
-export default function Play() {
-  return (
-    <main>
-      <h1>Play画面</h1>
-      <Button to="result" label="Resultへ" />
-    </main>
-  );
-}
+const getWordData = async () => {
+  const dataLoader = Container.getInstance().getDataLoader();
+  const wordData = await dataLoader.load();
+  return wordData;
+};
+
+const PlayPage = async () => {
+  const wordData = await getWordData();
+  return <Play data={wordData} />;
+};
+
+export default PlayPage;

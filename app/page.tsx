@@ -1,10 +1,10 @@
-import Button from "@/components/Button";
+import NavigateButton from "@/components/NavigateButton";
 
 export default function Home() {
   return (
     <main>
       <h1>Home画面</h1>
-      <Button to="play" label="Playへ" />
+      <NavigateButton to="play" label="Playへ" />
     </main>
   );
 }

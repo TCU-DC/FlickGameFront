@@ -10,5 +10,5 @@ export interface WordItem {
 }
 
 export interface WordList {
-  words: Word[];
+  words: WordItem[];
 }

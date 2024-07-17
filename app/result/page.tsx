@@ -1,10 +1,10 @@
-import Button from "@/components/Button";
+import NavigateButton from "@/components/NavigateButton";
 
 export default function Result() {
   return (
     <main>
       <h1>Result画面</h1>
-      <Button to="" label="最初の画面へ" />
+      <NavigateButton to="" label="最初の画面へ" />
     </main>
   );
 }

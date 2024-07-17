@@ -2,21 +2,16 @@
 
 import { useRouter } from "next/navigation";
 
-interface ButtonProps {
+interface NavigateButtonProps {
   to: string | "";
   label: string;
-  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ to, label, onClick }) => {
+const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
   const router = useRouter();
 
   const navigateTo = () => {
-    if (onClick) {
-      onClick();
-    } else if (to) {
-      router.push("/" + to);
-    }
+    router.push("/" + to);
   };
 
   return (
@@ -26,4 +21,4 @@ const Button: React.FC<ButtonProps> = ({ to, label, onClick }) => {
   );
 };
 
-export default Button;
+export default NavigateButton;
