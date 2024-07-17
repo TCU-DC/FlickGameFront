@@ -5,13 +5,18 @@ import { useRouter } from "next/navigation";
 interface ButtonProps {
   to: string | "";
   label: string;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ to, label }) => {
+const Button: React.FC<ButtonProps> = ({ to, label, onClick }) => {
   const router = useRouter();
 
   const navigateTo = () => {
-    router.push("/" + to);
+    if (onClick) {
+      onClick();
+    } else if (to) {
+      router.push("/" + to);
+    }
   };
 
   return (
