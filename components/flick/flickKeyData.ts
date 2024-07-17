@@ -1,5 +1,5 @@
-import { FlickHiraganaKeyData } from "@/app/_types/flickKeyTypes";
-import { HiraganaSwitchList } from "@/app/_types/flickKeyTypes";
+import type { FlickHiraganaKeyData } from "@/models/flickKeyTypes";
+import type { HiraganaSwitchList } from "@/models/flickKeyTypes";
 
 // フリックひらがなデータ
 export const flickHiraganaKeyData: FlickHiraganaKeyData = {

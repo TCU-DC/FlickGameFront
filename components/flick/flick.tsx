@@ -5,29 +5,28 @@ import { useSwipeable, SwipeableHandlers } from "react-swipeable";
 import {
   flickHiraganaKeyData,
   hiraganaSwitchList,
-} from "@/app/_components/flick/flickKeyData";
-import type { FlickDirection } from "@/app/_types/flickKeyTypes";
+} from "@/components/flick/flickKeyData";
+import type { FlickDirection } from "@/models/flickKeyTypes";
 
-interface HiraganaKeyProps {
+// ボタンコンポーネント（フリックのみ）
+const HiraganaKeyButton: React.FC<{
+  children?: React.ReactNode;
   kana: string;
   handlePutKana: Function;
-}
-
-// フリックボタン コンポーネント
-const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
+}> = ({ children, kana, handlePutKana }) => {
   // 親コンポーネントに入力文字を渡す
   const putKana = (text: string): void => {
     handlePutKana(text);
   };
   // フラグの初期化
-  const [isSwipingRight, setIsSwipingRight] = useState(false);
-  const [isSwipingLeft, setIsSwipingLeft] = useState(false);
-  const [isSwipingUp, setIsSwipingUp] = useState(false);
-  const [isSwipingDown, setIsSwipingDown] = useState(false);
+  const [isSwipingRight, setIsSwipingRight] = useState<boolean>(false);
+  const [isSwipingLeft, setIsSwipingLeft] = useState<boolean>(false);
+  const [isSwipingUp, setIsSwipingUp] = useState<boolean>(false);
+  const [isSwipingDown, setIsSwipingDown] = useState<boolean>(false);
   // スワイプ時のイベントハンドラ
   const handlers: SwipeableHandlers = useSwipeable({
     onSwiped: (eventData) => {
-      // TODO: Any を避ける
+      // TODO: 型を指定する
       putKana(
         flickHiraganaKeyData[(eventData.event.target as any).dataset.kana][
           eventData.dir as FlickDirection
@@ -58,12 +57,12 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
   });
   return (
     // フリックボタン
-    <div
+    <button
       {...handlers}
       data-kana={kana}
-      className="m-0.5 py-3 px-5 w-1/5 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
+      className="m-0.5 w-1/5 h-14 flex-1 inline-flex items-center justify-center text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:bg-gray-500 disabled:text-white disabled:pointer-events-none"
     >
-      {kana}
+      {children}
       {
         // 右にスワイプしている場合、右にかな表示を行う
         isSwipingRight && flickHiraganaKeyData[kana].Right && (
@@ -96,25 +95,31 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
           </div>
         )
       }
-    </div>
-  );
-};
-
-// ボタン（disabled） コンポーネント
-const KeyDisable: React.FC = () => {
-  return (
-    <button
-      disabled
-      className="m-0.5 py-3 px-5 w-1/6 inline-flex items-center justify-center gap-x-2 text-lg font-semibold rounded-lg border border-transparent bg-gray-500 text-white disabled:opacity-50 disabled:pointer-events-none"
-    >
-      　
     </button>
   );
 };
 
-// フリック入力UIコンポーネント
+// ボタンコンポーネント（フリック以外）
+const KeyButton: React.FC<{
+  children?: React.ReactNode;
+  isDisabled?: boolean;
+  onClick?: () => void;
+}> = ({ children, isDisabled = false, onClick }) => {
+  return (
+    <button
+      disabled={isDisabled}
+      onClick={onClick}
+      className="m-0.5  w-1/5 h-14 flex-1 inline-flex items-center justify-center text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:bg-gray-500 disabled:text-white disabled:pointer-events-none"
+    >
+      {children}
+    </button>
+  );
+};
+
+// フリック入力コンポーネント
 export function Flick(): JSX.Element {
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
+  const keys: string[] = Object.keys(flickHiraganaKeyData);
   const handlePutKana = (kana: string): void => {
     setText(`${text}${kana}`);
   };
@@ -123,7 +128,7 @@ export function Flick(): JSX.Element {
   };
   const switchLetter = (): void => {
     const lastLetter = text.slice(-1);
-    // lastLetter を二次元配列 hiraganaSwitchList の中から検索し、位置を取得
+    // hiraganaSwitchList の中から lastLetter を検索し、位置を取得
     let index: number = 0;
     let notFound: boolean = true;
     for (let i = 0; i < hiraganaSwitchList.length; i++) {
@@ -143,44 +148,59 @@ export function Flick(): JSX.Element {
       setText(`${text.slice(0, -1)}${nextLetter}`);
     }
   };
-
   return (
-    <div>
+    <>
       {text}
-      <br />
-      <KeyDisable />
-      <HiraganaKey kana={"あ"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"か"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"さ"} handlePutKana={handlePutKana}></HiraganaKey>
-      <div
-        onClick={deleteText}
-        className="m-0.5 py-3 px-5 w-1/6 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-      >
-        ←
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[0]} handlePutKana={handlePutKana}>
+          {keys[0]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[1]} handlePutKana={handlePutKana}>
+          {keys[1]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[2]} handlePutKana={handlePutKana}>
+          {keys[2]}
+        </HiraganaKeyButton>
+        <KeyButton onClick={deleteText}>del</KeyButton>
       </div>
-      <br />
-      <KeyDisable />
-      <HiraganaKey kana={"た"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"な"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"は"} handlePutKana={handlePutKana}></HiraganaKey>
-      <KeyDisable />
-      <br />
-      <KeyDisable />
-      <HiraganaKey kana={"ま"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"や"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"ら"} handlePutKana={handlePutKana}></HiraganaKey>
-      <KeyDisable />
-      <br />
-      <KeyDisable />
-      <div
-        onClick={switchLetter}
-        className="m-0.5 py-3 px-5 w-1/5 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-      >
-        変
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[3]} handlePutKana={handlePutKana}>
+          {keys[3]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[4]} handlePutKana={handlePutKana}>
+          {keys[4]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[5]} handlePutKana={handlePutKana}>
+          {keys[5]}
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
       </div>
-      <HiraganaKey kana={"わ"} handlePutKana={handlePutKana}></HiraganaKey>
-      <HiraganaKey kana={"、"} handlePutKana={handlePutKana}></HiraganaKey>
-      <KeyDisable />
-    </div>
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[6]} handlePutKana={handlePutKana}>
+          {keys[6]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[7]} handlePutKana={handlePutKana}>
+          {keys[7]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[8]} handlePutKana={handlePutKana}>
+          {keys[8]}
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
+      </div>
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <KeyButton onClick={switchLetter}>小ﾞﾟ</KeyButton>
+        <HiraganaKeyButton kana={keys[9]} handlePutKana={handlePutKana}>
+          {keys[9]}_
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[10]} handlePutKana={handlePutKana}>
+          ､｡?!
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
+      </div>
+    </>
   );
 }
