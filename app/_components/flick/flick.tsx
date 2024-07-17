@@ -5,8 +5,8 @@ import { useSwipeable, SwipeableHandlers } from "react-swipeable";
 import {
   flickHiraganaKeyData,
   hiraganaSwitchList,
-} from "@/app/_components/flickKeyData";
-import type { FlickDirection } from "@/app/_components/flickKeyTypes";
+} from "@/app/_components/flick/flickKeyData";
+import type { FlickDirection } from "@/app/_types/flickKeyTypes";
 
 interface HiraganaKeyProps {
   kana: string;
@@ -28,11 +28,6 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
   const handlers: SwipeableHandlers = useSwipeable({
     onSwiped: (eventData) => {
       // TODO: Any を避ける
-      console.log(
-        flickHiraganaKeyData[(eventData.event.target as any).dataset.kana][
-          eventData.dir as FlickDirection
-        ],
-      );
       putKana(
         flickHiraganaKeyData[(eventData.event.target as any).dataset.kana][
           eventData.dir as FlickDirection
@@ -40,7 +35,6 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
       );
     },
     onTap: (eventData) => {
-      console.log((eventData.event.target as any).dataset.kana);
       putKana((eventData.event.target as any).dataset.kana);
     },
     onSwiping: (eventData) => {
@@ -67,13 +61,13 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
     <div
       {...handlers}
       data-kana={kana}
-      className="m-0.5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-500 text-gray-500 hover:border-gray-800 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-300 dark:hover:border-neutral-300"
+      className="m-0.5 py-3 px-5 w-1/5 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
     >
       {kana}
       {
         // 右にスワイプしている場合、右にかな表示を行う
         isSwipingRight && flickHiraganaKeyData[kana].Right && (
-          <div className="absolute bg-gray-200 text-gray-800 p-2 rounded-lg ml-8">
+          <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg ml-20">
             {flickHiraganaKeyData[kana].Right}
           </div>
         )
@@ -81,7 +75,7 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
       {
         // 左にスワイプしている場合、左にかな表示を行う
         isSwipingLeft && flickHiraganaKeyData[kana].Left && (
-          <div className="absolute bg-gray-200 text-gray-800 p-2 rounded-lg -ml-12">
+          <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg -ml-20">
             {flickHiraganaKeyData[kana].Left}
           </div>
         )
@@ -89,7 +83,7 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
       {
         // 上にスワイプしている場合、上にかな表示を行う
         isSwipingUp && flickHiraganaKeyData[kana].Up && (
-          <div className="absolute bg-gray-200 text-gray-800 p-2 mb-20 rounded-lg -ml-2">
+          <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg mb-20">
             {flickHiraganaKeyData[kana].Up}
           </div>
         )
@@ -97,7 +91,7 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
       {
         // 下にスワイプしている場合、下にかな表示を行う
         isSwipingDown && flickHiraganaKeyData[kana].Down && (
-          <div className="absolute bg-gray-200 text-gray-800 p-2 mt-20 rounded-lg -ml-2">
+          <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg mt-20">
             {flickHiraganaKeyData[kana].Down}
           </div>
         )
@@ -106,10 +100,13 @@ const HiraganaKey: React.FC<HiraganaKeyProps> = ({ kana, handlePutKana }) => {
   );
 };
 
-// 無効化ボタン コンポーネント
+// ボタン（disabled） コンポーネント
 const KeyDisable: React.FC = () => {
   return (
-    <button className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-500 text-white disabled:opacity-50 disabled:pointer-events-none">
+    <button
+      disabled
+      className="m-0.5 py-3 px-5 w-1/6 inline-flex items-center justify-center gap-x-2 text-lg font-semibold rounded-lg border border-transparent bg-gray-500 text-white disabled:opacity-50 disabled:pointer-events-none"
+    >
       　
     </button>
   );
@@ -157,7 +154,7 @@ export function Flick(): JSX.Element {
       <HiraganaKey kana={"さ"} handlePutKana={handlePutKana}></HiraganaKey>
       <div
         onClick={deleteText}
-        className="m-0.5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-500 text-gray-500 hover:border-gray-800 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-300 dark:hover:border-neutral-300"
+        className="m-0.5 py-3 px-5 w-1/6 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
       >
         ←
       </div>
@@ -177,7 +174,7 @@ export function Flick(): JSX.Element {
       <KeyDisable />
       <div
         onClick={switchLetter}
-        className="m-0.5 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-500 text-gray-500 hover:border-gray-800 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-300 dark:hover:border-neutral-300"
+        className="m-0.5 py-3 px-5 w-1/5 inline-flex items-center justify-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
       >
         変
       </div>
