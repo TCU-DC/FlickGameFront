@@ -50,9 +50,11 @@ const HiraganaKeyButton: React.FC<{
       setIsSwipingUp(false);
       setIsSwipingDown(false);
     },
-    swipeDuration: 5000,
+    // スワイプ中のスクロールを防止
     preventScrollOnSwipe: true,
+    // タッチ入力の追跡（主にスマホ）
     trackTouch: true,
+    // マウス入力の追跡（主にPC）
     trackMouse: false,
   });
   return (

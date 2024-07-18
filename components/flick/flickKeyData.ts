@@ -1,7 +1,9 @@
-import type { FlickHiraganaKeyData } from "@/models/flickKeyTypes";
-import type { HiraganaSwitchList } from "@/models/flickKeyTypes";
+import type {
+  FlickHiraganaKeyData,
+  HiraganaSwitchList,
+} from "@/models/flickKeyTypes";
 
-// フリックひらがなデータ
+// フリックキーデータ（ひらがな）
 export const flickHiraganaKeyData: FlickHiraganaKeyData = {
   あ: {
     Right: "え",
@@ -71,7 +73,7 @@ export const flickHiraganaKeyData: FlickHiraganaKeyData = {
   },
 };
 
-// かな変換リスト
+// ひらがな変換リスト
 export const hiraganaSwitchList: HiraganaSwitchList = [
   ["あ", "ぁ"],
   ["い", "ぃ"],
