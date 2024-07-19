@@ -34,6 +34,7 @@ const Play = ({ data }: PlayProps) => {
     }
 
     setUserInput("");
+    setIsCorrect(false);
   };
 
   const [userInput, setUserInput] = useState("");
