@@ -29,6 +29,8 @@ const Play = ({ data }: PlayProps) => {
     if (nextIndex < data.words.length) {
       setCurrentIndex(nextIndex);
     }
+
+    setUserInput("");
   };
 
   const [userInput, setUserInput] = useState("");
