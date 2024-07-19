@@ -118,7 +118,8 @@ const KeyButton: React.FC<{
 const FlickKeyboard: React.FC<{
   userInput: string;
   handleSetUserInput: Function;
-}> = ({ userInput, handleSetUserInput }) => {
+  onClickEnter: () => void;
+}> = ({ userInput, handleSetUserInput, onClickEnter }) => {
   const keys: string[] = Object.keys(flickHiraganaKeyData);
   const handleKeyInput = (input: string): void => {
     handleSetUserInput(`${userInput}${input}`);
@@ -174,7 +175,7 @@ const FlickKeyboard: React.FC<{
         <HiraganaKeyButton kana={keys[5]} handleKeyInput={handleKeyInput}>
           {keys[5]}
         </HiraganaKeyButton>
-        <KeyButton isDisabled={true} />
+        <KeyButton onClick={onClickEnter}>Enter</KeyButton>
       </div>
       <div className="flex">
         <KeyButton isDisabled={true} />
