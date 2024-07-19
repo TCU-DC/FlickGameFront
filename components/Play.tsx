@@ -14,6 +14,8 @@ const Play = ({ data }: PlayProps) => {
   const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(false);
+
   const currentWord = data.words[currentIndex];
 
   useEffect(() => {
@@ -26,14 +28,19 @@ const Play = ({ data }: PlayProps) => {
     const nextIndex = currentIndex + 1;
     setIsFinished(nextIndex >= data.words.length);
 
+    if (!isCorrect) return;
     if (nextIndex < data.words.length) {
       setCurrentIndex(nextIndex);
     }
+
+    setUserInput("");
+    setIsCorrect(false);
   };
 
   const [userInput, setUserInput] = useState("");
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
+    setIsCorrect(input === currentWord.word.furigana);
   };
 
   if (loading) {
@@ -44,7 +51,7 @@ const Play = ({ data }: PlayProps) => {
     <main>
       <h1>Play画面</h1>
       <p>{currentWord.word.content}</p>
-      <p>{userInput}</p>
+      <p className="h-8">{userInput}</p>
       {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
         userInput={userInput}
