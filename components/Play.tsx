@@ -14,6 +14,8 @@ const Play = ({ data }: PlayProps) => {
   const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(false);
+
   const currentWord = data.words[currentIndex];
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const Play = ({ data }: PlayProps) => {
     const nextIndex = currentIndex + 1;
     setIsFinished(nextIndex >= data.words.length);
 
+    if (!isCorrect) return;
     if (nextIndex < data.words.length) {
       setCurrentIndex(nextIndex);
     }
@@ -36,6 +39,7 @@ const Play = ({ data }: PlayProps) => {
   const [userInput, setUserInput] = useState("");
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
+    setIsCorrect(input === currentWord.word.furigana);
   };
 
   if (loading) {
