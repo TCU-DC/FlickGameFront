@@ -28,14 +28,15 @@ const Play = ({ data }: PlayProps) => {
 
   const handleNextWord = () => {
     const nextIndex = currentIndex + 1;
+    const newScore = currentScore + currentWord.word.point;
 
     if (!isCorrect) return;
     if (nextIndex < data.words.length) {
-      setCurrentScore(currentScore + currentWord.word.point);
+      setCurrentScore(newScore);
       setCurrentIndex(nextIndex);
     } else {
       setIsFinished(true);
-      localStorage.setItem("score", currentScore.toString());
+      localStorage.setItem("score", newScore.toString());
     }
 
     setUserInput("");
