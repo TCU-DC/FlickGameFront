@@ -45,16 +45,11 @@ const Play = ({ data }: PlayProps) => {
       <h1>Play画面</h1>
       <p>{currentWord.word.content}</p>
       <p>{userInput}</p>
-      {isFinished ? (
-        <NavigateButton to="result" label="結果画面へ" />
-      ) : (
-        <button type="button" onClick={handleNextWord}>
-          次のWordへ
-        </button>
-      )}
+      {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
+        onClickEnter={handleNextWord}
       />
     </main>
   );
