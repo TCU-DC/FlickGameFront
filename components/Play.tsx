@@ -44,7 +44,7 @@ const Play = ({ data }: PlayProps) => {
     <main>
       <h1>Play画面</h1>
       <p>{currentWord.word.content}</p>
-      <p>{userInput}</p>
+      <p className="h-8">{userInput}</p>
       {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
         userInput={userInput}
