@@ -5,19 +5,15 @@ import { useSwipeable, SwipeableHandlers } from "react-swipeable";
 import {
   flickHiraganaKeyData,
   hiraganaSwitchList,
-} from "@/components/flick/flickKeyData";
-import type { FlickDirection } from "@/models/flickKeyTypes";
+} from "@/components/flick/FlickKeyData";
+import type { SwipeDirections } from "react-swipeable";
 
 // ボタンコンポーネント（フリックのみ）
 const HiraganaKeyButton: React.FC<{
   children?: React.ReactNode;
   kana: string;
-  handlePutKana: Function;
-}> = ({ children, kana, handlePutKana }) => {
-  // 親コンポーネントに入力文字を渡す
-  const putKana = (text: string): void => {
-    handlePutKana(text);
-  };
+  handleKeyInput: Function;
+}> = ({ children, kana, handleKeyInput }) => {
   // フラグの初期化
   const [isSwipingRight, setIsSwipingRight] = useState<boolean>(false);
   const [isSwipingLeft, setIsSwipingLeft] = useState<boolean>(false);
@@ -27,21 +23,21 @@ const HiraganaKeyButton: React.FC<{
   const handlers: SwipeableHandlers = useSwipeable({
     onSwiped: (eventData) => {
       // TODO: 型を指定する
-      putKana(
+      handleKeyInput(
         flickHiraganaKeyData[(eventData.event.target as any).dataset.kana][
-          eventData.dir as FlickDirection
+          eventData.dir
         ],
       );
     },
     onTap: (eventData) => {
-      putKana((eventData.event.target as any).dataset.kana);
+      handleKeyInput((eventData.event.target as any).dataset.kana);
     },
     onSwiping: (eventData) => {
       // スワイプ方向にかな表示を行うためのフラグを設定
-      setIsSwipingRight(eventData.dir === ("Right" as FlickDirection));
-      setIsSwipingLeft(eventData.dir === ("Left" as FlickDirection));
-      setIsSwipingUp(eventData.dir === ("Up" as FlickDirection));
-      setIsSwipingDown(eventData.dir === ("Down" as FlickDirection));
+      setIsSwipingRight(eventData.dir === ("Right" as SwipeDirections));
+      setIsSwipingLeft(eventData.dir === ("Left" as SwipeDirections));
+      setIsSwipingUp(eventData.dir === ("Up" as SwipeDirections));
+      setIsSwipingDown(eventData.dir === ("Down" as SwipeDirections));
     },
     onTouchEndOrOnMouseUp: () => {
       // スワイプ終了時にフラグをリセット
@@ -106,7 +102,7 @@ const KeyButton: React.FC<{
   children?: React.ReactNode;
   isDisabled?: boolean;
   onClick?: () => void;
-}> = ({ children, isDisabled = false, onClick }) => {
+}> = ({ children, isDisabled = false, onClick }): JSX.Element => {
   return (
     <button
       disabled={isDisabled}
@@ -119,17 +115,19 @@ const KeyButton: React.FC<{
 };
 
 // フリック入力コンポーネント
-export function Flick(): JSX.Element {
-  const [text, setText] = useState<string>("");
+const FlickKeyboard: React.FC<{
+  userInput: string;
+  handleSetUserInput: Function;
+}> = ({ userInput, handleSetUserInput }) => {
   const keys: string[] = Object.keys(flickHiraganaKeyData);
-  const handlePutKana = (kana: string): void => {
-    setText(`${text}${kana}`);
+  const handleKeyInput = (input: string): void => {
+    handleSetUserInput(`${userInput}${input}`);
   };
   const deleteText = (): void => {
-    setText(text.slice(0, -1));
+    handleSetUserInput(userInput.slice(0, -1));
   };
   const switchLetter = (): void => {
-    const lastLetter = text.slice(-1);
+    const lastLetter = userInput.slice(-1);
     // hiraganaSwitchList の中から lastLetter を検索し、位置を取得
     let index: number = 0;
     let notFound: boolean = true;
@@ -147,47 +145,46 @@ export function Flick(): JSX.Element {
           (hiraganaSwitchList[index].indexOf(lastLetter) + 1) %
             hiraganaSwitchList[index].length
         ];
-      setText(`${text.slice(0, -1)}${nextLetter}`);
+      handleSetUserInput(`${userInput.slice(0, -1)}${nextLetter}`);
     }
   };
   return (
     <>
-      {text}
       <div className="flex">
         <KeyButton isDisabled={true} />
-        <HiraganaKeyButton kana={keys[0]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[0]} handleKeyInput={handleKeyInput}>
           {keys[0]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[1]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[1]} handleKeyInput={handleKeyInput}>
           {keys[1]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[2]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[2]} handleKeyInput={handleKeyInput}>
           {keys[2]}
         </HiraganaKeyButton>
         <KeyButton onClick={deleteText}>del</KeyButton>
       </div>
       <div className="flex">
         <KeyButton isDisabled={true} />
-        <HiraganaKeyButton kana={keys[3]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[3]} handleKeyInput={handleKeyInput}>
           {keys[3]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[4]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[4]} handleKeyInput={handleKeyInput}>
           {keys[4]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[5]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[5]} handleKeyInput={handleKeyInput}>
           {keys[5]}
         </HiraganaKeyButton>
         <KeyButton isDisabled={true} />
       </div>
       <div className="flex">
         <KeyButton isDisabled={true} />
-        <HiraganaKeyButton kana={keys[6]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[6]} handleKeyInput={handleKeyInput}>
           {keys[6]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[7]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[7]} handleKeyInput={handleKeyInput}>
           {keys[7]}
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[8]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[8]} handleKeyInput={handleKeyInput}>
           {keys[8]}
         </HiraganaKeyButton>
         <KeyButton isDisabled={true} />
@@ -195,14 +192,16 @@ export function Flick(): JSX.Element {
       <div className="flex">
         <KeyButton isDisabled={true} />
         <KeyButton onClick={switchLetter}>小ﾞﾟ</KeyButton>
-        <HiraganaKeyButton kana={keys[9]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[9]} handleKeyInput={handleKeyInput}>
           {keys[9]}_
         </HiraganaKeyButton>
-        <HiraganaKeyButton kana={keys[10]} handlePutKana={handlePutKana}>
+        <HiraganaKeyButton kana={keys[10]} handleKeyInput={handleKeyInput}>
           ､｡?!
         </HiraganaKeyButton>
         <KeyButton isDisabled={true} />
       </div>
     </>
   );
-}
+};
+
+export default FlickKeyboard;
