@@ -55,6 +55,7 @@ const Play = ({ data }: PlayProps) => {
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
+        onClickEnter={handleNextWord}
       />
     </main>
   );
