@@ -31,7 +31,6 @@ const Play = ({ data }: PlayProps) => {
     }
   };
 
-  // フリックの入力状態を管理
   const [userInput, setUserInput] = useState("");
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
