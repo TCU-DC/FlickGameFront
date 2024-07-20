@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { WordListResponse } from "@/models/word";
 import { DataLoader } from "@/interfaces/DataLoader";
 import { RankingResponse } from "@/models/ranking";
 
