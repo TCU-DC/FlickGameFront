@@ -2,7 +2,7 @@ import { Container } from "@/di/container";
 import Play from "@/components/Play";
 
 const getWordData = async () => {
-  const dataLoader = Container.getInstance().getDataLoader();
+  const dataLoader = Container.getInstance().getWordLoader();
   const wordData = await dataLoader.load();
   return wordData;
 };

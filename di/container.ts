@@ -1,12 +1,17 @@
-import { WordDataLoader } from "@/interfaces/WordDataLoader";
-import { PublicFolderDataLoader } from "@/loaders/PublicFolderDataLoader";
+import { DataLoader } from "@/interfaces/DataLoader";
+import { RankingLoaderFromLocal } from "@/loaders/RankingLoaderFromLocal";
+import { WordLoaderFromLocal } from "@/loaders/WordLoaderFromLocal";
+import { RankingResponse } from "@/models/ranking";
+import { WordListResponse } from "@/models/word";
 
 export class Container {
   private static instance: Container;
-  private dataLoader: WordDataLoader;
+  private wordLoader: DataLoader<WordListResponse>;
+  private rankingLoader: DataLoader<RankingResponse>;
 
   private constructor() {
-    this.dataLoader = new PublicFolderDataLoader();
+    this.wordLoader = new WordLoaderFromLocal();
+    this.rankingLoader = new RankingLoaderFromLocal();
   }
 
   public static getInstance(): Container {
@@ -16,7 +21,11 @@ export class Container {
     return Container.instance;
   }
 
-  public getDataLoader(): WordDataLoader {
-    return this.dataLoader;
+  public getWordLoader(): DataLoader<WordListResponse> {
+    return this.wordLoader;
+  }
+
+  public getRankingLoader(): DataLoader<RankingResponse> {
+    return this.rankingLoader;
   }
 }

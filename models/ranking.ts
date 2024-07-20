@@ -4,7 +4,7 @@ export interface Ranking {
   score: number;
 }
 
-export interface RankingResponse {
+export interface RankingResponse extends Response {
   level: string;
   rankings: Ranking[];
 }
