@@ -1,324 +1,75 @@
 {
-  "words": [
+  "data": [
     {
-      "word": {
-        "content": "桜",
-        "furigana": "さくら",
-        "point": 10,
-        "level": "normal"
-      }
+      "word_id": "5",
+      "word_text": "熊",
+      "word_furigana": "クマ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "海",
-        "furigana": "うみ",
-        "point": 8,
-        "level": "easy"
-      }
+      "word_id": "3",
+      "word_text": "鳥",
+      "word_furigana": "トリ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "富士山",
-        "furigana": "ふじさん",
-        "point": 15,
-        "level": "hard"
-      }
+      "word_id": "1",
+      "word_text": "猫",
+      "word_furigana": "ネコ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "和風",
-        "furigana": "わふう",
-        "point": 12,
-        "level": "normal"
-      }
+      "word_id": "4",
+      "word_text": "魚",
+      "word_furigana": "サカナ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "映画",
-        "furigana": "えいが",
-        "point": 7,
-        "level": "easy"
-      }
+      "word_id": "10",
+      "word_text": "鹿",
+      "word_furigana": "シカ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "音楽",
-        "furigana": "おんがく",
-        "point": 9,
-        "level": "normal"
-      }
+      "word_id": "6",
+      "word_text": "猿",
+      "word_furigana": "サル",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "食事",
-        "furigana": "しょくじ",
-        "point": 11,
-        "level": "normal"
-      }
+      "word_id": "9",
+      "word_text": "獅子",
+      "word_furigana": "シシ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "友達",
-        "furigana": "ともだち",
-        "point": 6,
-        "level": "easy"
-      }
+      "word_id": "8",
+      "word_text": "虎",
+      "word_furigana": "トラ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "学校",
-        "furigana": "がっこう",
-        "point": 8,
-        "level": "normal"
-      }
+      "word_id": "2",
+      "word_text": "犬",
+      "word_furigana": "イヌ",
+      "word_level": "normal",
+      "point_allocation": 1
     },
     {
-      "word": {
-        "content": "本",
-        "furigana": "ほん",
-        "point": 5,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "電車",
-        "furigana": "でんしゃ",
-        "point": 9,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "図書館",
-        "furigana": "としょかん",
-        "point": 10,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "花火",
-        "furigana": "はなび",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "夏",
-        "furigana": "なつ",
-        "point": 6,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "冬",
-        "furigana": "ふゆ",
-        "point": 6,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "雪",
-        "furigana": "ゆき",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "月",
-        "furigana": "つき",
-        "point": 5,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "星",
-        "furigana": "ほし",
-        "point": 5,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "公園",
-        "furigana": "こうえん",
-        "point": 8,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "自転車",
-        "furigana": "じてんしゃ",
-        "point": 9,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "カメラ",
-        "furigana": "かめら",
-        "point": 6,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "写真",
-        "furigana": "しゃしん",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "旅行",
-        "furigana": "りょこう",
-        "point": 10,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "飛行機",
-        "furigana": "ひこうき",
-        "point": 11,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "空",
-        "furigana": "そら",
-        "point": 8,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "祭り",
-        "furigana": "まつり",
-        "point": 9,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "川",
-        "furigana": "かわ",
-        "point": 5,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "山",
-        "furigana": "やま",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "動物",
-        "furigana": "どうぶつ",
-        "point": 10,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "家族",
-        "furigana": "かぞく",
-        "point": 8,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "料理",
-        "furigana": "りょうり",
-        "point": 9,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "スポーツ",
-        "furigana": "すぽーつ",
-        "point": 10,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "サッカー",
-        "furigana": "さっかー",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "テレビ",
-        "furigana": "てれび",
-        "point": 6,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "映画館",
-        "furigana": "えいがかん",
-        "point": 10,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "美術館",
-        "furigana": "びじゅつかん",
-        "point": 12,
-        "level": "hard"
-      }
-    },
-    {
-      "word": {
-        "content": "音楽会",
-        "furigana": "おんがくかい",
-        "point": 9,
-        "level": "normal"
-      }
-    },
-    {
-      "word": {
-        "content": "風景",
-        "furigana": "ふうけい",
-        "point": 8,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "建物",
-        "furigana": "たてもの",
-        "point": 7,
-        "level": "easy"
-      }
-    },
-    {
-      "word": {
-        "content": "通り",
-        "furigana": "とおり",
-        "point": 6,
-        "level": "easy"
-      }
+      "word_id": "7",
+      "word_text": "狼",
+      "word_furigana": "オオカミ",
+      "word_level": "normal",
+      "point_allocation": 1
     }
-  ]
+  ],
+  "limit_timer": 60
 }
