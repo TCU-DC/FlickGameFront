@@ -15,10 +15,16 @@ jobs:
           node-version: "22.x"
       - name: Install dependencies
         run: npm ci
-      - name: Show installed dependencies
-        run: npm list
-      - name: Run lint check in debug mode
-        run: DEBUG=* npm run lint
+        shell: bash
+      - name: Add node_modules/.bin to PATH
+        run: echo "export PATH=$(npm bin):$PATH" >> $GITHUB_ENV
+        shell: bash
+      - name: List node_modules/.bin
+        run: ls -la $(npm bin)
+        shell: bash
+      - name: Run lint check
+        run: npm run lint
+        shell: bash
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
