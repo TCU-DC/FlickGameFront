@@ -51,8 +51,6 @@ const Play = ({ response }: PlayProps) => {
       setCurrentIndex(nextIndex);
       setCurrentScore(newScore);
     } else {
-      localStorage.setItem("score", newScore.toString());
-
       const scoreRequest: ScoreRequest = {
         point: newScore,
         level: response.words[0].word_level,
@@ -65,6 +63,8 @@ const Play = ({ response }: PlayProps) => {
       } catch (e) {
         console.error(e);
       }
+
+      localStorage.setItem("score", newScore.toString());
       router.push("/result");
     }
 
@@ -75,6 +75,7 @@ const Play = ({ response }: PlayProps) => {
     currentScore,
     currentWord.point_allocation,
     isCorrect,
+    response.words,
     response.words.length,
     router,
   ]);
