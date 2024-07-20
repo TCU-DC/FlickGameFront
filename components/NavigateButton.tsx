@@ -15,7 +15,7 @@ const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
   };
 
   return (
-    <button type="button" onClick={navigateTo}>
+    <button type="button" onClick={navigateTo} className="button">
       {label}
     </button>
   );
