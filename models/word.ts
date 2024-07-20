@@ -1,14 +1,12 @@
 export interface Word {
-  content: string;
-  furigana: string;
-  point: number;
-  level: string;
-}
-
-export interface WordItem {
-  word: Word;
+  word_id: string;
+  word_text: string;
+  word_furigana: string;
+  word_level: string;
+  point_allocation: number;
 }
 
 export interface WordList {
-  words: WordItem[];
+  words: Word[];
+  limit_time: number;
 }
