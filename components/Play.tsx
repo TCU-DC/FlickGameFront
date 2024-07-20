@@ -13,8 +13,10 @@ type PlayProps = {
 const Play = ({ data }: PlayProps) => {
   const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
   const currentWord = data.words[currentIndex];
 
@@ -26,18 +28,21 @@ const Play = ({ data }: PlayProps) => {
 
   const handleNextWord = () => {
     const nextIndex = currentIndex + 1;
-    setIsFinished(nextIndex >= data.words.length);
+    const newScore = currentScore + currentWord.word.point;
 
     if (!isCorrect) return;
     if (nextIndex < data.words.length) {
+      setCurrentScore(newScore);
       setCurrentIndex(nextIndex);
+    } else {
+      setIsFinished(true);
+      localStorage.setItem("score", newScore.toString());
     }
 
     setUserInput("");
     setIsCorrect(false);
   };
 
-  const [userInput, setUserInput] = useState("");
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
     setIsCorrect(input === currentWord.word.furigana);
