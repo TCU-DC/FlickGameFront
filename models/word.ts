@@ -6,7 +6,7 @@ export interface Word {
   point_allocation: number;
 }
 
-export interface WordList {
+export interface WordListResponse {
   words: Word[];
   limit_time: number;
 }

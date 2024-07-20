@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react";
 import NavigateButton from "@/components/NavigateButton";
-import { WordList } from "@/models/word";
+import { WordListResponse } from "@/models/word";
 
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
 
 type PlayProps = {
-  data: WordList;
+  response: WordListResponse;
 };
 
-const Play = ({ data }: PlayProps) => {
+const Play = ({ response }: PlayProps) => {
   const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
@@ -18,20 +18,20 @@ const Play = ({ data }: PlayProps) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [userInput, setUserInput] = useState("");
 
-  const currentWord = data.words[currentIndex];
+  const currentWord = response.words[currentIndex];
 
   useEffect(() => {
-    if (data) {
+    if (response) {
       setLoading(false);
     }
-  }, [data]);
+  }, [response]);
 
   const handleNextWord = () => {
     const nextIndex = currentIndex + 1;
-    const newScore = currentScore + currentWord.word.point;
+    const newScore = currentScore + currentWord.point_allocation;
 
     if (!isCorrect) return;
-    if (nextIndex < data.words.length) {
+    if (nextIndex < response.words.length) {
       setCurrentScore(newScore);
       setCurrentIndex(nextIndex);
     } else {
@@ -45,7 +45,7 @@ const Play = ({ data }: PlayProps) => {
 
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
-    setIsCorrect(input === currentWord.word.furigana);
+    setIsCorrect(input === currentWord.word_furigana);
   };
 
   if (loading) {
@@ -55,7 +55,7 @@ const Play = ({ data }: PlayProps) => {
   return (
     <main>
       <h1>Play画面</h1>
-      <p>{currentWord.word.content}</p>
+      <p>{currentWord.word_text}</p>
       <p className="h-8">{userInput}</p>
       {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
