@@ -5,7 +5,7 @@ import { useSwipeable, SwipeableHandlers } from "react-swipeable";
 import {
   flickHiraganaKeyData,
   hiraganaSwitchList,
-} from "@/components/flick/FlickKeyData";
+} from "@/components/flick/flickKeyData";
 import type { SwipeDirections } from "react-swipeable";
 
 // ボタンコンポーネント（フリックのみ）
