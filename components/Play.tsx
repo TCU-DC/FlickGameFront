@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
 import { ScoreRequest } from "@/models/ScoreRequest";
 import { ScorePoster } from "@/sender/ScorePoster";
+import GameUI from "@/components/ui/gameUI";
 
 type PlayProps = {
   response: WordListResponse;
@@ -94,6 +95,14 @@ const Play = ({ response }: PlayProps) => {
       <h1>Play画面</h1>
       <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
+
+      <GameUI
+        loading={loading}
+        currentIndex={currentIndex}
+        userInput={userInput}
+        isCorrect={isCorrect}
+        isFinished={isFinished}
+      />
       <p className="h-8">{userInput}</p>
       <FlickKeyboard
         userInput={userInput}
