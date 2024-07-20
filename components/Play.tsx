@@ -19,7 +19,7 @@ const Play = ({ response }: PlayProps) => {
   const [loading, setLoading] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const scorePoster = Container.getInstance().getScorePoster();
+  // const scorePoster = Container.getInstance().getScorePoster();
 
   const currentWord = response.words[currentIndex];
 
@@ -47,7 +47,7 @@ const Play = ({ response }: PlayProps) => {
         level: level,
       };
 
-      scorePoster.post(scoreRequest);
+      // scorePoster.post(scoreRequest);
     }
 
     setUserInput("");
