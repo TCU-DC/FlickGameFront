@@ -14,8 +14,6 @@ export class RankingLoaderFromApi implements DataLoader<RankingResponse> {
   }
 
   async load(): Promise<RankingResponse> {
-    console.log(this.BASE_URL);
-
     const response = await fetch(this.URL);
     const data: RankingResponse = await response.json();
 

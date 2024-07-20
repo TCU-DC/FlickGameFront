@@ -16,12 +16,8 @@ export class WordLoaderFromApi implements DataLoader<WordListResponse> {
   }
 
   async load(): Promise<WordListResponse> {
-    console.log(this.BASE_URL);
-
     const response = await fetch(this.URL);
     const data: WordListResponse = await response.json();
-
-    console.log("WordLoaderFromApi", data);
 
     return data;
   }
