@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import NavigateButton from "@/components/NavigateButton";
 import { WordListResponse } from "@/models/word";
 import { useRouter } from "next/navigation";
 
@@ -15,7 +14,6 @@ type PlayProps = {
 
 const Play = ({ response }: PlayProps) => {
   const router = useRouter();
-  const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -25,16 +23,16 @@ const Play = ({ response }: PlayProps) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (time > 0) {
-        setTime(time - 1);
-      } else {
+      if (time <= 0) {
         localStorage.setItem("score", currentScore.toString());
         router.push("/result");
         return;
       }
+
+      setTime(time - 1);
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentScore, loading, response.limit_time, router, time]);
+  }, [currentScore, router, time]);
 
   const currentWord = response.words[currentIndex];
 
@@ -44,18 +42,15 @@ const Play = ({ response }: PlayProps) => {
     }
   }, [response]);
 
-  const handleNextWord = () => {
+  useEffect(() => {
     const nextIndex = currentIndex + 1;
     const newScore = currentScore + currentWord.point_allocation;
 
     if (!isCorrect) return;
     if (nextIndex < response.words.length) {
-      setCurrentScore(newScore);
       setCurrentIndex(nextIndex);
+      setCurrentScore(newScore);
     } else {
-      setIsFinished(true);
-      localStorage.setItem("score", newScore.toString());
-
       const scoreRequest: ScoreRequest = {
         point: newScore,
         level: response.words[0].word_level,
@@ -68,11 +63,22 @@ const Play = ({ response }: PlayProps) => {
       } catch (e) {
         console.error(e);
       }
+
+      localStorage.setItem("score", newScore.toString());
+      router.push("/result");
     }
 
     setUserInput("");
     setIsCorrect(false);
-  };
+  }, [
+    currentIndex,
+    currentScore,
+    currentWord.point_allocation,
+    isCorrect,
+    response.words,
+    response.words.length,
+    router,
+  ]);
 
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
@@ -89,11 +95,9 @@ const Play = ({ response }: PlayProps) => {
       <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
       <p className="h-8">{userInput}</p>
-      {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
-        onClickEnter={handleNextWord}
       />
     </main>
   );
