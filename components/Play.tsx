@@ -25,16 +25,16 @@ const Play = ({ response }: PlayProps) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (time > 0) {
+      if (time > 0 && !isFinished) {
         setTime(time - 1);
-      } else {
+      } else if (time <= 0) {
         localStorage.setItem("score", currentScore.toString());
         router.push("/result");
         return;
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentScore, loading, response.limit_time, router, time]);
+  }, [currentScore, isFinished, loading, response.limit_time, router, time]);
 
   const currentWord = response.words[currentIndex];
 
@@ -44,14 +44,14 @@ const Play = ({ response }: PlayProps) => {
     }
   }, [response]);
 
-  const handleNextWord = () => {
+  useEffect(() => {
     const nextIndex = currentIndex + 1;
     const newScore = currentScore + currentWord.point_allocation;
 
     if (!isCorrect) return;
     if (nextIndex < response.words.length) {
-      setCurrentScore(newScore);
       setCurrentIndex(nextIndex);
+      setCurrentScore(newScore);
     } else {
       setIsFinished(true);
       localStorage.setItem("score", newScore.toString());
@@ -72,7 +72,13 @@ const Play = ({ response }: PlayProps) => {
 
     setUserInput("");
     setIsCorrect(false);
-  };
+  }, [
+    currentIndex,
+    currentScore,
+    currentWord.point_allocation,
+    isCorrect,
+    response.words.length,
+  ]);
 
   const handleSetUserInput = (input: string) => {
     setUserInput(input);
@@ -93,7 +99,6 @@ const Play = ({ response }: PlayProps) => {
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
-        onClickEnter={handleNextWord}
       />
     </main>
   );
