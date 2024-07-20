@@ -61,8 +61,13 @@ const Play = ({ response }: PlayProps) => {
         level: response.words[0].word_level,
       };
 
-      const scorePoster = new ScorePoster();
-      scorePoster.post(scoreRequest);
+      const poster = new ScorePoster();
+
+      try {
+        poster.post(scoreRequest);
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     setUserInput("");
