@@ -1,72 +1,72 @@
 {
-  "data": [
+  "words": [
     {
       "word_id": "5",
       "word_text": "熊",
-      "word_furigana": "クマ",
+      "word_furigana": "くま",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "3",
       "word_text": "鳥",
-      "word_furigana": "トリ",
+      "word_furigana": "とり",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "1",
       "word_text": "猫",
-      "word_furigana": "ネコ",
+      "word_furigana": "ねこ",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "4",
       "word_text": "魚",
-      "word_furigana": "サカナ",
+      "word_furigana": "さかな",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "10",
       "word_text": "鹿",
-      "word_furigana": "シカ",
+      "word_furigana": "しか",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "6",
       "word_text": "猿",
-      "word_furigana": "サル",
+      "word_furigana": "さる",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "9",
       "word_text": "獅子",
-      "word_furigana": "シシ",
+      "word_furigana": "しし",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "8",
       "word_text": "虎",
-      "word_furigana": "トラ",
+      "word_furigana": "とら",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "2",
       "word_text": "犬",
-      "word_furigana": "イヌ",
+      "word_furigana": "いぬ",
       "word_level": "normal",
       "point_allocation": 1
     },
     {
       "word_id": "7",
       "word_text": "狼",
-      "word_furigana": "オオカミ",
+      "word_furigana": "おおかみ",
       "word_level": "normal",
       "point_allocation": 1
     }
