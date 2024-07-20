@@ -9,7 +9,7 @@ const getWordData = async () => {
 
 const PlayPage = async () => {
   const wordData = await getWordData();
-  return <Play data={wordData} />;
+  return <Play response={wordData} />;
 };
 
 export default PlayPage;

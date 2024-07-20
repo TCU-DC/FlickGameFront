@@ -1,5 +1,5 @@
-import { WordList } from "@/models/word";
+import { WordListResponse } from "@/models/word";
 
 export interface WordDataLoader {
-  load(): Promise<WordList>;
+  load(): Promise<WordListResponse>;
 }
