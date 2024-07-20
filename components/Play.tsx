@@ -5,6 +5,8 @@ import NavigateButton from "@/components/NavigateButton";
 import { WordListResponse } from "@/models/word";
 
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
+import { Container } from "@/di/container";
+import { ScoreRequest } from "@/models/scoreRequest";
 
 type PlayProps = {
   response: WordListResponse;
@@ -17,6 +19,7 @@ const Play = ({ response }: PlayProps) => {
   const [loading, setLoading] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
   const [userInput, setUserInput] = useState("");
+  const scorePoster = Container.getInstance().getScorePoster();
 
   const currentWord = response.words[currentIndex];
 
@@ -37,6 +40,14 @@ const Play = ({ response }: PlayProps) => {
     } else {
       setIsFinished(true);
       localStorage.setItem("score", newScore.toString());
+      const level: string = response.words[0].word_level;
+
+      const scoreRequest: ScoreRequest = {
+        point: 10,
+        level: "normal",
+      };
+
+      scorePoster.post(scoreRequest);
     }
 
     setUserInput("");
