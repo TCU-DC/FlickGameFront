@@ -15,7 +15,6 @@ type PlayProps = {
 
 const Play = ({ response }: PlayProps) => {
   const router = useRouter();
-  const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -25,16 +24,16 @@ const Play = ({ response }: PlayProps) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (time > 0 && !isFinished) {
-        setTime(time - 1);
-      } else if (time <= 0) {
+      if (time <= 0) {
         localStorage.setItem("score", currentScore.toString());
         router.push("/result");
         return;
       }
+
+      setTime(time - 1);
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentScore, isFinished, loading, response.limit_time, router, time]);
+  }, [currentScore, router, time]);
 
   const currentWord = response.words[currentIndex];
 
@@ -53,7 +52,6 @@ const Play = ({ response }: PlayProps) => {
       setCurrentIndex(nextIndex);
       setCurrentScore(newScore);
     } else {
-      setIsFinished(true);
       localStorage.setItem("score", newScore.toString());
 
       const scoreRequest: ScoreRequest = {
@@ -68,6 +66,7 @@ const Play = ({ response }: PlayProps) => {
       } catch (e) {
         console.error(e);
       }
+      router.push("/result");
     }
 
     setUserInput("");
@@ -78,6 +77,7 @@ const Play = ({ response }: PlayProps) => {
     currentWord.point_allocation,
     isCorrect,
     response.words.length,
+    router,
   ]);
 
   const handleSetUserInput = (input: string) => {
@@ -95,7 +95,6 @@ const Play = ({ response }: PlayProps) => {
       <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
       <p className="h-8">{userInput}</p>
-      {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
