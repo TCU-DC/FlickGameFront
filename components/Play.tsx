@@ -96,11 +96,7 @@ const Play = ({ response }: PlayProps) => {
       <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
 
-      <GameUI
-        userInput={userInput}
-        isCorrect={isCorrect}
-        isFinished={isFinished}
-      />
+      <GameUI userInput={userInput} isCorrect={isCorrect} />
       <p className="h-8">{userInput}</p>
       <FlickKeyboard
         userInput={userInput}

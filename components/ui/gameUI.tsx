@@ -2,11 +2,9 @@ import styles from "@/styles/game.module.scss";
 import Image from "next/image";
 
 export default function Game({
-  isFinished,
   userInput,
   isCorrect,
 }: {
-  isFinished: boolean;
   userInput: string;
   isCorrect: boolean;
 }) {
@@ -23,7 +21,6 @@ export default function Game({
   };
 
   const getEnemyImage = () => {
-    if (isFinished) return "/images/enemy/enemy-die.svg";
     if (isCorrect) return "/images/enemy/enemy-die.svg";
     return `/images/enemy/enemy.gif`;
   };
