@@ -10,7 +10,14 @@ type ResultProps = {
 
 export const Result = ({ response }: ResultProps) => {
   const [loading, setLoading] = useState(true);
-  const score = localStorage.getItem("score");
+  const [score, setScore] = useState(0);
+  useEffect(() => {
+    const getItem = localStorage.getItem("score");
+    if (getItem) {
+      setScore(parseInt(getItem));
+    }
+  }, []);
+
   const level = response.level;
   const ranking = response.ranking;
 

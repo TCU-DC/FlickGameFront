@@ -7,7 +7,7 @@ const getRankingData = async () => {
   return rankingData;
 };
 
-export const ResultPage = async () => {
+const ResultPage = async () => {
   const rankingData = await getRankingData();
 
   return <Result response={rankingData} />;
