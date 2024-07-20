@@ -97,7 +97,6 @@ const Play = ({ response }: PlayProps) => {
       <p>{currentWord.word_text}</p>
 
       <GameUI
-        currentIndex={currentIndex}
         userInput={userInput}
         isCorrect={isCorrect}
         isFinished={isFinished}
