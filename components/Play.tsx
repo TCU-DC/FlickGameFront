@@ -6,7 +6,7 @@ import { WordListResponse } from "@/models/word";
 import { useRouter } from "next/navigation";
 
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
-import { ScoreRequest } from "@/models/scoreRequest";
+import { ScoreRequest } from "@/models/ScoreRequest";
 import { ScorePoster } from "@/sender/ScorePoster";
 
 type PlayProps = {

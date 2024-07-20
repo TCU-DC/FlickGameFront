@@ -1,5 +1,5 @@
 import { DataPoster } from "@/interfaces/DataPoster";
-import { ScoreRequest } from "@/models/scoreRequest";
+import { ScoreRequest } from "@/models/ScoreRequest";
 
 export class ScorePoster implements DataPoster<ScoreRequest> {
   private readonly BASE_URL = process.env.BASE_URL;

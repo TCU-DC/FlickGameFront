@@ -3,7 +3,7 @@ import { DataPoster } from "@/interfaces/DataPoster";
 import { RankingLoaderFromLocal } from "@/loaders/RankingLoaderFromLocal";
 import { WordLoaderFromLocal } from "@/loaders/WordLoaderFromLocal";
 import { RankingResponse } from "@/models/ranking";
-import { ScoreRequest } from "@/models/scoreRequest";
+import { ScoreRequest } from "@/models/ScoreRequest";
 import { WordListResponse } from "@/models/word";
 import { ScorePoster } from "@/sender/ScorePoster";
 
