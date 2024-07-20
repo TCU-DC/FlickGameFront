@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import NavigateButton from "@/components/NavigateButton";
 import { WordListResponse } from "@/models/word";
+import { useRouter } from "next/navigation";
 
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
 
@@ -11,12 +12,27 @@ type PlayProps = {
 };
 
 const Play = ({ response }: PlayProps) => {
+  const router = useRouter();
   const [isFinished, setIsFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
   const [userInput, setUserInput] = useState("");
+  const [time, setTime] = useState(response.limit_time);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (time > 0) {
+        setTime(time - 1);
+      } else {
+        localStorage.setItem("score", currentScore.toString());
+        router.push("/result");
+        return;
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [currentScore, loading, response.limit_time, router, time]);
 
   const currentWord = response.words[currentIndex];
 
@@ -55,6 +71,7 @@ const Play = ({ response }: PlayProps) => {
   return (
     <main>
       <h1>Play画面</h1>
+      <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
       <p className="h-8">{userInput}</p>
       {isFinished ? <NavigateButton to="result" label="結果画面へ" /> : <></>}
