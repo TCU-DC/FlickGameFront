@@ -32,6 +32,14 @@ body {
     rgb(var(--background-start-rgb));
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 375px;
+  height: 667px;
 }
 
 @layer utilities {

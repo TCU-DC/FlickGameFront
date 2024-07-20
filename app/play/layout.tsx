@@ -3,5 +3,5 @@ export default function PlayLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <section>{children}</section>;
+  return <main>{children}</main>;
 }

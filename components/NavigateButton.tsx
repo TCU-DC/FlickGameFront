@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { animatePageOut } from "../animations";
 import styles from "@/styles/button.module.scss";
 
 interface NavigateButtonProps {
@@ -11,12 +12,12 @@ interface NavigateButtonProps {
 const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
   const router = useRouter();
 
-  const navigateTo = () => {
-    router.push("/" + to);
+  const handleClick = () => {
+    animatePageOut(to, router);
   };
 
   return (
-    <button type="button" onClick={navigateTo} className={styles.button}>
+    <button type="button" onClick={handleClick} className={styles.button}>
       {/* <div className={styles.button__cloud1}></div>
       <div className={styles.button__cloud2}></div> */}
       <div className={styles.button__inner}>
