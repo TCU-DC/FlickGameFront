@@ -17,6 +17,7 @@
     "secretlint": "^8.2.4"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.12.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
