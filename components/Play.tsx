@@ -43,8 +43,8 @@ const Play = ({ response }: PlayProps) => {
       const level: string = response.words[0].word_level;
 
       const scoreRequest: ScoreRequest = {
-        point: 10,
-        level: "normal",
+        point: newScore,
+        level: level,
       };
 
       scorePoster.post(scoreRequest);
