@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import styles from "@/styles/button.module.scss";
 
 interface NavigateButtonProps {
   to: string | "";
@@ -15,8 +16,13 @@ const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
   };
 
   return (
-    <button type="button" onClick={navigateTo} className="button">
-      {label}
+    <button type="button" onClick={navigateTo} className={styles.button}>
+      {/* <div className={styles.button__cloud1}></div>
+      <div className={styles.button__cloud2}></div> */}
+      <div className={styles.button__inner}>
+        <span className={styles.button__text}>{label}</span>
+        <div className={styles.button__pattern}></div>
+      </div>
     </button>
   );
 };
