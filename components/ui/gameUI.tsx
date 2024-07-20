@@ -16,12 +16,11 @@ export default function Game({
 
   const getSamuraiImage = () => {
     if (userInput) return "/images/samurai/samurai-stanby.webp";
-    // if (isCorrect) return "/images/samurai/samurai-end.svg";
     return `/images/samurai/samurai.gif`;
   };
 
   const getEnemyImage = () => {
-    if (isCorrect) return "/images/enemy/enemy-die.svg";
+    // if (isCorrect) return "/images/enemy/enemy-die.svg";
     return `/images/enemy/enemy.gif`;
   };
 
