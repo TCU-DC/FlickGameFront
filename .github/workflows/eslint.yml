@@ -17,10 +17,8 @@ jobs:
         run: npm ci
       - name: Show installed dependencies
         run: npm list
-      - name: Check if next is installed
-        run: ls -la node_modules/.bin/
-      - name: Run lint check
-        run: npm run lint
+      - name: Run lint check in debug mode
+        run: DEBUG=* npm run lint
       - name: Reviewdog
         uses: reviewdog/action-eslint@v1
         with:
