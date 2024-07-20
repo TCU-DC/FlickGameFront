@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import NavigateButton from "@/components/NavigateButton";
 import { WordListResponse } from "@/models/word";
 import { useRouter } from "next/navigation";
 
