@@ -1,15 +1,16 @@
-"use client";
+import { Result } from "@/components/Result";
+import { Container } from "@/di/container";
 
-import NavigateButton from "@/components/NavigateButton";
+const getRankingData = async () => {
+  const dataLoader = Container.getInstance().getRankingLoader();
+  const rankingData = await dataLoader.load();
+  return rankingData;
+};
 
-export default function Result() {
-  const score = localStorage.getItem("score");
+export const ResultPage = async () => {
+  const rankingData = await getRankingData();
 
-  return (
-    <main>
-      <h1>Result画面</h1>
-      <p>あなたのスコア : {score ? score : 0}点です</p>
-      <NavigateButton to="" label="最初の画面へ" />
-    </main>
-  );
-}
+  return <Result response={rankingData} />;
+};
+
+export default ResultPage;
