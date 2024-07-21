@@ -77,7 +77,7 @@ const Play = ({ response }: PlayProps) => {
 
     const delayNextQuestion = () => {
       // 正解判定アニメーションのための1.5秒間の遅延
-      setTimeout(handleNextQuestion, 1500);
+      setTimeout(handleNextQuestion, 1000);
     };
 
     delayNextQuestion();
