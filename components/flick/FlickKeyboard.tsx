@@ -150,58 +150,56 @@ const FlickKeyboard: React.FC<{
   };
 
   return (
-    <section className="absolute w-full bottom-0">
-      <div className="">
-        <div className="flex">
-          <KeyButton isDisabled={true} />
-          <HiraganaKeyButton kana={keys[0]} handleKeyInput={handleKeyInput}>
-            {keys[0]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[1]} handleKeyInput={handleKeyInput}>
-            {keys[1]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[2]} handleKeyInput={handleKeyInput}>
-            {keys[2]}
-          </HiraganaKeyButton>
-          <KeyButton onClick={deleteText}>del</KeyButton>
-        </div>
-        <div className="flex">
-          <KeyButton isDisabled={true} />
-          <HiraganaKeyButton kana={keys[3]} handleKeyInput={handleKeyInput}>
-            {keys[3]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[4]} handleKeyInput={handleKeyInput}>
-            {keys[4]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[5]} handleKeyInput={handleKeyInput}>
-            {keys[5]}
-          </HiraganaKeyButton>
-          <KeyButton isDisabled={true} />
-        </div>
-        <div className="flex">
-          <KeyButton isDisabled={true} />
-          <HiraganaKeyButton kana={keys[6]} handleKeyInput={handleKeyInput}>
-            {keys[6]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[7]} handleKeyInput={handleKeyInput}>
-            {keys[7]}
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[8]} handleKeyInput={handleKeyInput}>
-            {keys[8]}
-          </HiraganaKeyButton>
-          <KeyButton isDisabled={true} />
-        </div>
-        <div className="flex">
-          <KeyButton isDisabled={true} />
-          <KeyButton onClick={switchLetter}>小ﾞﾟ</KeyButton>
-          <HiraganaKeyButton kana={keys[9]} handleKeyInput={handleKeyInput}>
-            {keys[9]}_
-          </HiraganaKeyButton>
-          <HiraganaKeyButton kana={keys[10]} handleKeyInput={handleKeyInput}>
-            ､｡?!
-          </HiraganaKeyButton>
-          <KeyButton isDisabled={true} />
-        </div>
+    <section className="bottom-0">
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[0]} handleKeyInput={handleKeyInput}>
+          {keys[0]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[1]} handleKeyInput={handleKeyInput}>
+          {keys[1]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[2]} handleKeyInput={handleKeyInput}>
+          {keys[2]}
+        </HiraganaKeyButton>
+        <KeyButton onClick={deleteText}>del</KeyButton>
+      </div>
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[3]} handleKeyInput={handleKeyInput}>
+          {keys[3]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[4]} handleKeyInput={handleKeyInput}>
+          {keys[4]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[5]} handleKeyInput={handleKeyInput}>
+          {keys[5]}
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
+      </div>
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <HiraganaKeyButton kana={keys[6]} handleKeyInput={handleKeyInput}>
+          {keys[6]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[7]} handleKeyInput={handleKeyInput}>
+          {keys[7]}
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[8]} handleKeyInput={handleKeyInput}>
+          {keys[8]}
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
+      </div>
+      <div className="flex">
+        <KeyButton isDisabled={true} />
+        <KeyButton onClick={switchLetter}>小ﾞﾟ</KeyButton>
+        <HiraganaKeyButton kana={keys[9]} handleKeyInput={handleKeyInput}>
+          {keys[9]}_
+        </HiraganaKeyButton>
+        <HiraganaKeyButton kana={keys[10]} handleKeyInput={handleKeyInput}>
+          ､｡?!
+        </HiraganaKeyButton>
+        <KeyButton isDisabled={true} />
       </div>
     </section>
   );
