@@ -21,7 +21,9 @@ const Room = () => {
       setJoinInfo(parsedJoinInfo);
       roomId = parsedJoinInfo.room;
     }
-    const ws = new WebSocket(`ws://localhost:8080/room/${roomId}`);
+    const ws = new WebSocket(
+      `${process.env.NEXT_PUBLIC_WEB_SOCKET_BASE_URL}/room/${roomId}`,
+    );
 
     ws.onopen = () => {
       console.log("connected");
@@ -104,7 +106,12 @@ const Room = () => {
       {joinInfo?.member_type === "leader" ? (
         <>
           <p>メンバー全員が参加後「開始」を押してください</p>
-          <button onClick={handleStart}>開始</button>
+          <button
+            onClick={handleStart}
+            className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+          >
+            開始
+          </button>
         </>
       ) : (
         <p>リーダーが開始するまでお待ちください</p>
@@ -114,11 +121,13 @@ const Room = () => {
       <ul>
         {message.map((item, index) => (
           <li key={index}>
+            -----
             <p>ニックネーム: {item.nickname}</p>
             <p>
               メンバータイプ:{" "}
               {item.member_type === "member" ? "参加者" : "リーダー"}
             </p>
+            -----
           </li>
         ))}
       </ul>
