@@ -1,6 +1,8 @@
 import { DataLoader } from "@/interfaces/DataLoader";
 import { DataPoster } from "@/interfaces/DataPoster";
+import { RankingLoaderFromApi } from "@/loaders/RankingLoaderFromApi";
 import { RankingLoaderFromLocal } from "@/loaders/RankingLoaderFromLocal";
+import { WordLoaderFromApi } from "@/loaders/WordLoaderFromApi";
 import { WordLoaderFromLocal } from "@/loaders/WordLoaderFromLocal";
 import { RankingResponse } from "@/models/ranking";
 import { ScoreRequest } from "@/models/ScoreRequest";
@@ -14,8 +16,8 @@ export class Container {
   private scorePoster: DataPoster<ScoreRequest>;
 
   private constructor() {
-    this.wordLoader = new WordLoaderFromLocal();
-    this.rankingLoader = new RankingLoaderFromLocal();
+    this.wordLoader = new WordLoaderFromApi();
+    this.rankingLoader = new RankingLoaderFromApi();
     this.scorePoster = new ScorePoster();
   }
 

@@ -7,8 +7,6 @@ export class ScorePoster implements DataPoster<ScoreRequest> {
   private readonly URL = `${this.BASE_URL}${this.ENDPOINT}`;
 
   async post(data: ScoreRequest): Promise<Response> {
-    console.log(this.URL);
-
     const response = await fetch(this.URL, {
       method: "POST",
       headers: {
