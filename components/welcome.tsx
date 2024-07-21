@@ -39,6 +39,8 @@ export default function Welcome() {
               「WAGIRI!!」は、日本をテーマにしたオンラインタイピングWEBアプリです。スマホのフリック入力に対応しており、スピードを要する侍の緊張を表現。さらに、ランキング機能を搭載しているので、他のユーザーと競い合いながらスコアを伸ばす楽しさも味わえます。さあ、「WAGIRI!!」でタイピングの達人を目指しましょう！
             </p>
             <NavigateButton to="play" label="Play" />
+            <NavigateButton to="createroom" label="ルームを作る" />
+            <NavigateButton to="joinroom" label="ルームに参加する" />
           </div>
           <div className={`${styles.image} "image"`}>
             <Image
