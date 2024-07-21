@@ -42,3 +42,50 @@
     transform: scale(.8);
 }
 
+@media (max-width: 768px) {
+    .pointResult {
+        margin-left: 0.5rem;
+
+    }
+
+    .wrap {
+        padding: 1rem 0;
+    }
+
+    .result {
+        padding-top: 1.5rem;
+        transform: scale(.8);
+    }
+
+    .label {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+
+    .score {
+        margin-bottom: 0.5rem;
+    }
+
+    .list {
+        line-height: 1.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .rank {
+        font-size: 1rem;
+    }
+
+    .point {
+        font-size: 1.5rem;
+        margin-right: 0.1rem;
+    }
+
+    .pointUnit {
+        font-size: 0.5rem;
+    }
+
+    .btn {
+        transform: scale(0.7);
+    }
+}
+

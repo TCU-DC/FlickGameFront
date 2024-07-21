@@ -30,7 +30,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  height: 100vh;
+  height: 100dvh;
+  height: -webkit-fill-available;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -48,6 +49,12 @@ li {
 
 a {
   text-decoration: none;
+}
+
+#game {
+  width: 375px;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 @layer utilities {

@@ -148,8 +148,9 @@ const FlickKeyboard: React.FC<{
       handleSetUserInput(`${userInput.slice(0, -1)}${nextLetter}`);
     }
   };
+
   return (
-    <>
+    <section className="bottom-0">
       <div className="flex">
         <KeyButton isDisabled={true} />
         <HiraganaKeyButton kana={keys[0]} handleKeyInput={handleKeyInput}>
@@ -200,7 +201,7 @@ const FlickKeyboard: React.FC<{
         </HiraganaKeyButton>
         <KeyButton isDisabled={true} />
       </div>
-    </>
+    </section>
   );
 };
 
