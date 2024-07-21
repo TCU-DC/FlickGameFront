@@ -57,7 +57,10 @@ export const Result = ({ response }: ResultProps) => {
       webSocketRef.current = ws;
       webSocketRef.current.onmessage = (event) => {
         const data: ResultSocketInfo = JSON.parse(event.data);
-        setRoomMembersResult([...roomMembersResult, data]);
+        setRoomMembersResult((prevArray) => {
+          if (prevArray.includes(data)) return prevArray;
+          return [...prevArray, data];
+        });
       };
       return () => ws.close();
     }
