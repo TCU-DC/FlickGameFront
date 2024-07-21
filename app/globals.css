@@ -42,6 +42,14 @@ main {
   height: 667px;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

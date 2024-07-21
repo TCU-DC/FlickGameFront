@@ -18,8 +18,6 @@ const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
 
   return (
     <button type="button" onClick={handleClick} className={styles.button}>
-      {/* <div className={styles.button__cloud1}></div>
-      <div className={styles.button__cloud2}></div> */}
       <div className={styles.button__inner}>
         <span className={styles.button__text}>{label}</span>
         <div className={styles.button__pattern}></div>

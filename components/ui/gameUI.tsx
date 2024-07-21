@@ -20,7 +20,6 @@ export default function Game({
   };
 
   const getEnemyImage = () => {
-    // if (isCorrect) return "/images/enemy/enemy-die.svg";
     return `/images/enemy/enemy.gif`;
   };
 

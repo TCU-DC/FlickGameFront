@@ -5,7 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import styles from "@/styles/welcome.module.scss";
 
-import backImg from "@/public/images/samurai/samurai-default.svg";
+import backImg from "@/public/images/samurai/samurai-home.svg";
 import { useEffect } from "react";
 
 export default function Welcome() {
