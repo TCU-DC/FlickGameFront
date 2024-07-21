@@ -9,14 +9,16 @@ export class WordLoaderFromApi implements DataLoader<WordListResponse> {
   private readonly COUNT = "10";
 
   constructor() {
+    const randomString = Math.random().toString(36).slice(-8);
     this.URL.searchParams.append("level", this.LEVEL);
     this.URL.searchParams.append("count", this.COUNT);
+    this.URL.searchParams.append("_=", randomString);
   }
 
   async load(): Promise<WordListResponse> {
     console.log(this.BASE_URL);
 
-    const response = await fetch(this.URL, { cache: "no-store" });
+    const response = await fetch(this.URL);
     const data: WordListResponse = await response.json();
 
     console.log("WordLoaderFromApi", data);
