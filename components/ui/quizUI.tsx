@@ -4,10 +4,16 @@ import styles from "@/styles/quizui.module.scss";
 type QuizUIProps = {
   leftTime: number;
   question: string;
+  question_furigana: string;
   userInput: string | "";
 };
 
-const QuizUI: React.FC<QuizUIProps> = ({ leftTime, question, userInput }) => {
+const QuizUI: React.FC<QuizUIProps> = ({
+  leftTime,
+  question,
+  question_furigana,
+  userInput,
+}) => {
   const [timePercentage, setTimePercentage] = useState(0);
 
   // leftTimeの範囲を0〜100に正規化する関数
@@ -35,7 +41,8 @@ const QuizUI: React.FC<QuizUIProps> = ({ leftTime, question, userInput }) => {
       </div>
       <div className={styles["user-input"]}>{userInput}</div>
       <div className={styles.question}>
-        <span className={styles.qLabel}>問題:</span> {question}
+        <span className={styles.qLabel}>問題:</span> {question}（
+        {question_furigana}）
       </div>
     </div>
   );
