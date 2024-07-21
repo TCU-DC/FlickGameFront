@@ -106,6 +106,7 @@ const Play = ({ response }: PlayProps) => {
       <QuizUI
         leftTime={time}
         question={currentWord.word_text}
+        question_furigana={currentWord.word_furigana}
         userInput={userInput}
       />
 
