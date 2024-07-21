@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import FlickKeyboard from "@/components/flick/FlickKeyboard";
 import { ScoreRequest } from "@/models/ScoreRequest";
 import { ScorePoster } from "@/sender/ScorePoster";
+import GameUI from "@/components/ui/gameUI";
 
 type PlayProps = {
   response: WordListResponse;
@@ -47,29 +48,39 @@ const Play = ({ response }: PlayProps) => {
     const newScore = currentScore + currentWord.point_allocation;
 
     if (!isCorrect) return;
-    if (nextIndex < response.words.length) {
-      setCurrentIndex(nextIndex);
-      setCurrentScore(newScore);
-    } else {
-      const scoreRequest: ScoreRequest = {
-        point: newScore,
-        level: response.words[0].word_level,
-      };
 
-      const poster = new ScorePoster();
+    const handleNextQuestion = () => {
+      if (nextIndex < response.words.length) {
+        setCurrentIndex(nextIndex);
+        setCurrentScore(newScore);
+      } else {
+        const scoreRequest: ScoreRequest = {
+          point: newScore,
+          level: response.words[0].word_level,
+        };
 
-      try {
-        poster.post(scoreRequest);
-      } catch (e) {
-        console.error(e);
+        const poster = new ScorePoster();
+
+        try {
+          poster.post(scoreRequest);
+        } catch (e) {
+          console.error(e);
+        }
+
+        localStorage.setItem("score", newScore.toString());
+        router.push("/result");
       }
 
-      localStorage.setItem("score", newScore.toString());
-      router.push("/result");
-    }
+      setUserInput("");
+      setIsCorrect(false);
+    };
 
-    setUserInput("");
-    setIsCorrect(false);
+    const delayNextQuestion = () => {
+      // 正解判定アニメーションのための1.5秒間の遅延
+      setTimeout(handleNextQuestion, 1000);
+    };
+
+    delayNextQuestion();
   }, [
     currentIndex,
     currentScore,
@@ -94,6 +105,8 @@ const Play = ({ response }: PlayProps) => {
       <h1>Play画面</h1>
       <p>残り時間：{time}</p>
       <p>{currentWord.word_text}</p>
+
+      <GameUI userInput={userInput} isCorrect={isCorrect} />
       <p className="h-8">{userInput}</p>
       <FlickKeyboard
         userInput={userInput}

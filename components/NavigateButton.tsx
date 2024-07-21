@@ -1,6 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { animatePageOut } from "../animations";
+import styles from "@/styles/button.module.scss";
 
 interface NavigateButtonProps {
   to: string | "";
@@ -10,13 +12,16 @@ interface NavigateButtonProps {
 const NavigateButton: React.FC<NavigateButtonProps> = ({ to, label }) => {
   const router = useRouter();
 
-  const navigateTo = () => {
-    router.push("/" + to);
+  const handleClick = () => {
+    animatePageOut(to, router);
   };
 
   return (
-    <button type="button" onClick={navigateTo} className="button">
-      {label}
+    <button type="button" onClick={handleClick} className={styles.button}>
+      <div className={styles.button__inner}>
+        <span className={styles.button__text}>{label}</span>
+        <div className={styles.button__pattern}></div>
+      </div>
     </button>
   );
 };

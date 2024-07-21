@@ -1,0 +1,57 @@
+.mainContainer {
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  padding: 3rem;
+}
+.blurCircle1 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to bottom, white, pink);
+  border-radius: 50%;
+  filter: blur(120px);
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  /* transform: translate(50%); */
+}
+.blurCircle2 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to bottom, white, pink);
+  border-radius: 50%;
+  filter: blur(100px);
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  /* transform: translate(50%); */
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rules */

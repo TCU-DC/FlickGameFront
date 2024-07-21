@@ -10,10 +10,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
+    "gsap": "^3.12.5",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "react-swipeable": "^7.0.1",
+    "sass": "^1.77.8",
     "secretlint": "^8.2.4"
   },
   "devDependencies": {

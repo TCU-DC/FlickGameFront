@@ -1,0 +1,34 @@
+.gameUI {
+  height: 50vh;
+  width: 100%;
+
+  .background {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    z-index: -2;
+  }
+
+  .samurai {
+    position: absolute;
+    top: 35%;
+    width: 50%;
+    z-index: -1;
+  }
+  .enemy {
+    position: relative;
+    bottom: 20%;
+    left: 150px;
+    z-index: -1;
+  }
+
+  .kusa {
+    position: relative;
+    bottom: 55%;
+    left: 50%;
+    transform: scale(2);
+    z-index: -1;
+  }
+}
