@@ -8,6 +8,7 @@ import FlickKeyboard from "@/components/flick/FlickKeyboard";
 import { ScoreRequest } from "@/models/ScoreRequest";
 import { ScorePoster } from "@/sender/ScorePoster";
 import GameUI from "@/components/ui/gameUI";
+import QuizUI from "@/components/ui/quizUI";
 
 type PlayProps = {
   response: WordListResponse;
@@ -76,7 +77,6 @@ const Play = ({ response }: PlayProps) => {
     };
 
     const delayNextQuestion = () => {
-      // 正解判定アニメーションのための1.5秒間の遅延
       setTimeout(handleNextQuestion, 1000);
     };
 
@@ -101,18 +101,20 @@ const Play = ({ response }: PlayProps) => {
   }
 
   return (
-    <main>
-      <h1>Play画面</h1>
-      <p>残り時間：{time}</p>
-      <p>{currentWord.word_text}</p>
+    <>
+      {/* <h1>Play画面</h1> */}
+      <QuizUI
+        leftTime={time}
+        question={currentWord.word_text}
+        userInput={userInput}
+      />
 
       <GameUI userInput={userInput} isCorrect={isCorrect} />
-      <p className="h-8">{userInput}</p>
       <FlickKeyboard
         userInput={userInput}
         handleSetUserInput={handleSetUserInput}
       />
-    </main>
+    </>
   );
 };
 

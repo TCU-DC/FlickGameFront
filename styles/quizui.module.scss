@@ -1,0 +1,55 @@
+.quiz-container {
+    height: 10vh;
+    background-color: black;
+    .time {
+        position: relative;
+        top: 0;
+        right: 0;
+        font-size: 1em;
+        color: #ccc;
+
+        .tUnit {
+            font-size: .5rem;
+        }
+    }
+
+.time-bar-container {
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    height: .5rem;
+    margin-top: 10px;
+  }
+  
+  .time-bar {
+    background-color: darkred;
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease-in-out; 
+  }
+  .user-input {
+    font-size: 1em;
+    position: relative;
+    display: block;
+    margin: 0 2rem;
+    padding: .5rem;
+    border-bottom: 1px solid;
+    color: white;
+    transition: .5s;
+    }
+
+  .question {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+
+    .qLabel {
+        font-size: 1rem;
+    }
+}
+}
