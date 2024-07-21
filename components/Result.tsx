@@ -55,7 +55,7 @@ export const Result = ({ response }: ResultProps) => {
 
   return (
     <section ref={containerRef} className={styles.result}>
-      <div class="relative flex w-80 flex-col rounded-xl bg-gray-700 bg-clip-border text-stone-50 shadow-md">
+      <div className="relative flex w-80 flex-col rounded-xl bg-gray-700 bg-clip-border text-stone-50 shadow-md">
         <div
           ref={imageRef}
           className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r from-blue-500 to-blue-600"
@@ -63,7 +63,7 @@ export const Result = ({ response }: ResultProps) => {
           <Image src="/images/result.webp" alt="result" fill priority />
         </div>
         <div className="p-6">
-          <h1 class="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+          <h1 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
             結果
           </h1>
           <div className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
@@ -91,12 +91,8 @@ export const Result = ({ response }: ResultProps) => {
             ))}
           </div>
         </div>
-        <div className=" p-6 pt-0 flex justify-center">
-          <NavigateButton
-            to="/"
-            label="最初の画面へ"
-            className={`py-3 px-6 ${styles.btn}`}
-          />
+        <div className="p-6 pt-0 flex justify-center">
+          <NavigateButton to="/" label="最初の画面へ" />
         </div>
       </div>
     </section>
