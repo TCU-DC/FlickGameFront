@@ -9,8 +9,10 @@ export class RankingLoaderFromApi implements DataLoader<RankingResponse> {
   private readonly HIGH_ORDER = "3";
 
   constructor() {
+    const randomString = Math.random().toString(36).slice(-8);
     this.URL.searchParams.append("level", this.LEVEL);
     this.URL.searchParams.append("high_order", this.HIGH_ORDER);
+    this.URL.searchParams.append("_=", randomString);
   }
 
   async load(): Promise<RankingResponse> {
