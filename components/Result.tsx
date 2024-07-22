@@ -47,12 +47,12 @@ export const Result = ({ response }: ResultProps) => {
         );
       }
     }
-  }, [loading]);
+  }, [loading, response]);
   const [resultSockerInfo, setResultSockerInfo] = useState<ResultSocketInfo>();
   const [connected, setConnected] = useState(false);
   const [roomMembersResult, setRoomMembersResult] = useState<
-    ResultSocketInfo[]
-  >([]);
+    Set<ResultSocketInfo>
+  >(new Set());
   const webSocketRef = useRef<WebSocket>();
 
   useEffect(() => {
@@ -93,10 +93,7 @@ export const Result = ({ response }: ResultProps) => {
       webSocketRef.current = ws;
       webSocketRef.current.onmessage = (event) => {
         const data: ResultSocketInfo = JSON.parse(event.data);
-        setRoomMembersResult((prevArray) => {
-          if (prevArray.includes(data)) return prevArray;
-          return [...prevArray, data];
-        });
+        setRoomMembersResult((prev) => prev.add(data));
       };
       return () => ws.close();
     }
@@ -120,15 +117,15 @@ export const Result = ({ response }: ResultProps) => {
   let level: string = "";
   let ranking: { nickname: string; score: number }[] = [];
 
-  if (roomMembersResult.length === 0) {
+  if (roomMembersResult.size === 0) {
     level = response.level;
     ranking = response.ranking;
   } else {
-    ranking = roomMembersResult.map((member) => {
-      return {
+    roomMembersResult.forEach((member) => {
+      ranking.push({
         nickname: member.nickname,
         score: parseInt(member.score),
-      };
+      });
     });
 
     ranking.sort((a, b) => b.score - a.score);
