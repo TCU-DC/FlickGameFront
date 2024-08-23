@@ -6,7 +6,6 @@ import {
   flickHiraganaKeyData,
   hiraganaSwitchList,
 } from "@/components/flick/flickKeyData";
-import type { SwipeDirections } from "react-swipeable";
 
 // ボタンコンポーネント（フリックのみ）
 const HiraganaKeyButton: React.FC<{
@@ -19,25 +18,24 @@ const HiraganaKeyButton: React.FC<{
   const [isSwipingLeft, setIsSwipingLeft] = useState<boolean>(false);
   const [isSwipingUp, setIsSwipingUp] = useState<boolean>(false);
   const [isSwipingDown, setIsSwipingDown] = useState<boolean>(false);
+  const flickHiraganaKeyDataRight = flickHiraganaKeyData[kana].Right;
+  const flickHiraganaKeyDataLeft = flickHiraganaKeyData[kana].Left;
+  const flickHiraganaKeyDataUp = flickHiraganaKeyData[kana].Up;
+  const flickHiraganaKeyDataDown = flickHiraganaKeyData[kana].Down;
   // スワイプ時のイベントハンドラ
   const handlers: SwipeableHandlers = useSwipeable({
     onSwiped: (eventData) => {
-      // TODO: 型を指定する
-      handleKeyInput(
-        flickHiraganaKeyData[(eventData.event.target as any).dataset.kana][
-          eventData.dir
-        ],
-      );
+      handleKeyInput(flickHiraganaKeyData[kana][eventData.dir]);
     },
-    onTap: (eventData) => {
-      handleKeyInput((eventData.event.target as any).dataset.kana);
+    onTap: () => {
+      handleKeyInput(kana);
     },
     onSwiping: (eventData) => {
       // スワイプ方向にかな表示を行うためのフラグを設定
-      setIsSwipingRight(eventData.dir === ("Right" as SwipeDirections));
-      setIsSwipingLeft(eventData.dir === ("Left" as SwipeDirections));
-      setIsSwipingUp(eventData.dir === ("Up" as SwipeDirections));
-      setIsSwipingDown(eventData.dir === ("Down" as SwipeDirections));
+      setIsSwipingRight(eventData.dir === "Right");
+      setIsSwipingLeft(eventData.dir === "Left");
+      setIsSwipingUp(eventData.dir === "Up");
+      setIsSwipingDown(eventData.dir === "Down");
     },
     onTouchEndOrOnMouseUp: () => {
       // スワイプ終了時にフラグをリセット
@@ -51,45 +49,44 @@ const HiraganaKeyButton: React.FC<{
     // タッチ入力の追跡（主にスマホ）
     trackTouch: true,
     // マウス入力の追跡（主にPC）
-    trackMouse: false,
+    trackMouse: true,
   });
   return (
     // フリックボタン
     <button
       {...handlers}
-      data-kana={kana}
       className="m-0.5 w-1/5 h-14 flex-1 inline-flex items-center justify-center text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:bg-gray-500 disabled:text-white disabled:pointer-events-none"
     >
       {children}
       {
         // 右にスワイプしている場合、右にかな表示を行う
-        isSwipingRight && flickHiraganaKeyData[kana].Right && (
+        isSwipingRight && flickHiraganaKeyDataRight && (
           <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg ml-20">
-            {flickHiraganaKeyData[kana].Right}
+            {flickHiraganaKeyDataRight}
           </div>
         )
       }
       {
         // 左にスワイプしている場合、左にかな表示を行う
-        isSwipingLeft && flickHiraganaKeyData[kana].Left && (
+        isSwipingLeft && flickHiraganaKeyDataLeft && (
           <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg -ml-20">
-            {flickHiraganaKeyData[kana].Left}
+            {flickHiraganaKeyDataLeft}
           </div>
         )
       }
       {
         // 上にスワイプしている場合、上にかな表示を行う
-        isSwipingUp && flickHiraganaKeyData[kana].Up && (
+        isSwipingUp && flickHiraganaKeyDataUp && (
           <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg mb-20">
-            {flickHiraganaKeyData[kana].Up}
+            {flickHiraganaKeyDataUp}
           </div>
         )
       }
       {
         // 下にスワイプしている場合、下にかな表示を行う
-        isSwipingDown && flickHiraganaKeyData[kana].Down && (
+        isSwipingDown && flickHiraganaKeyDataDown && (
           <div className="absolute bg-gray-200 text-gray-800 py-2 px-3 rounded-lg mt-20">
-            {flickHiraganaKeyData[kana].Down}
+            {flickHiraganaKeyDataDown}
           </div>
         )
       }
