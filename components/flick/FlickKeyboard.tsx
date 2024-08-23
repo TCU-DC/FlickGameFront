@@ -49,7 +49,7 @@ const HiraganaKeyButton: React.FC<{
     // タッチ入力の追跡（主にスマホ）
     trackTouch: true,
     // マウス入力の追跡（主にPC）
-    trackMouse: false,
+    trackMouse: true,
   });
   return (
     // フリックボタン
